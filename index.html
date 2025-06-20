@@ -5,17 +5,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peta Rawan Kebakaran Tasikmalaya</title>
+
+  <!-- Tambahkan ini -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    #map { height: 100vh; }
-    #locate-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 1000;
-      padding: 8px 12px;
-    }
-  </style>
 </head>
 <body>
   <h1>Pemetaan Wilayah Rawan Kebakaran - Tasikmalaya</h1>
@@ -23,37 +18,7 @@
   <button id="locate-btn">📍 Lokasi Saya</button>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    const map = L.map('map').setView([-7.3505, 108.2172], 12);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    document.getElementById("locate-btn").addEventListener("click", () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-          const { latitude, longitude } = position.coords;
-
-          const customIcon = L.icon({
-            iconUrl: "lokasi-icon.png", // pakai ikon kamu
-            iconSize: [50, 50],
-            iconAnchor: [25, 50],
-            popupAnchor: [0, -50]
-          });
-
-          L.marker([latitude, longitude], { icon: customIcon })
-            .addTo(map)
-            .bindPopup("Lokasi Anda")
-            .openPopup();
-
-          map.setView([latitude, longitude], 14);
-        }, () => alert("Gagal mendapatkan lokasi."));
-      } else {
-        alert("Browser tidak mendukung geolokasi.");
-      }
-    });
-  </script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
