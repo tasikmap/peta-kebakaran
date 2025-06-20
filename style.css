@@ -13,7 +13,7 @@ h1 {
 }
 #locate-btn {
   position: absolute;
-  bottom: 70px;     
+  bottom: 70px;     /* 👈 tombol muncul di kanan bawah (sedikit ke atas) */
   right: 10px;
   z-index: 1000;
   background: #fff;
