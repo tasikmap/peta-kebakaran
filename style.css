@@ -8,12 +8,12 @@ h1 {
   margin: 10px 0;
 }
 #map {
-  height: 40vh;
+  height: 90vh;
   width: 100%;
 }
 #locate-btn {
   position: absolute;
-  bottom: 70px;     /* 👈 tombol muncul di kanan bawah (sedikit ke atas) */
+  bottom: 70px;     
   right: 10px;
   z-index: 1000;
   background: #fff;
