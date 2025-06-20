@@ -1,7 +1,35 @@
-const kebakaranData = [
-  { lokasi: "HZ Mustofa", tingkat: "Tinggi", lat: -7.3251, lng: 108.2147, jenis: "Permukiman", penyebab: "Listrik", waktu: "2024-06-12 14:30" },
-  { lokasi: "Indihiang", tingkat: "Sedang", lat: -7.318, lng: 108.249, jenis: "Gudang", penyebab: "Kompor Gas", waktu: "2024-05-03 09:00" },
-  { lokasi: "Cipedes", tingkat: "Rendah", lat: -7.3285, lng: 108.2297, jenis: "Rumah", penyebab: "Lilin", waktu: "2024-04-21 19:45" },
-  { lokasi: "Tamansari", tingkat: "Sedang", lat: -7.341, lng: 108.198, jenis: "Lahan", penyebab: "Pembakaran", waktu: "2024-03-18 13:00" },
-  { lokasi: "Bungursari", tingkat: "Tinggi", lat: -7.3401, lng: 108.2071, jenis: "Pabrik", penyebab: "Korsleting", waktu: "2024-02-10 17:00" }
+
+const dataKebakaran = [
+  {
+    lat: -7.3500,
+    lng: 108.2200,
+    lokasi: "Pasar Cikurubuk",
+    waktu: "2020-07-15",
+    penyebab: "Kompor meledak",
+    tingkat: "Tinggi"
+  },
+  {
+    lat: -7.3650,
+    lng: 108.2100,
+    lokasi: "Gunung Panglayungan",
+    waktu: "2022-09-12",
+    penyebab: "Cuaca panas ekstrem",
+    tingkat: "Tinggi"
+  },
+  {
+    lat: -7.3601,
+    lng: 108.2001,
+    lokasi: "Jl. BKR Indihiang",
+    waktu: "2023-04-28",
+    penyebab: "Korsleting listrik",
+    tingkat: "Tinggi"
+  },
+  {
+    lat: -7.3455,
+    lng: 108.2342,
+    lokasi: "Taman Kota, Cihideung",
+    waktu: "2025-06-18",
+    penyebab: "Korsleting AC",
+    tingkat: "Tinggi"
+  }
 ];
