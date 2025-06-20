@@ -1,3 +1,4 @@
+
 const map = L.map('map').setView([-7.3505, 108.2172], 12);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -21,8 +22,13 @@ dataKebakaran.forEach(item => {
 });
 
 document.getElementById("locate-btn").addEventListener("click", () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
+  if (!navigator.geolocation) {
+    alert("Browser tidak mendukung fitur lokasi.");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    position => {
       const { latitude, longitude } = position.coords;
       L.marker([latitude, longitude], {
         icon: L.icon({
@@ -31,8 +37,21 @@ document.getElementById("locate-btn").addEventListener("click", () => {
         })
       }).addTo(map).bindPopup("Lokasi Anda").openPopup();
       map.setView([latitude, longitude], 14);
-    }, () => alert("Gagal mendapatkan lokasi."));
-  } else {
-    alert("Browser tidak mendukung geolokasi.");
-  }
+    },
+    error => {
+      let message = "Gagal mendapatkan lokasi.";
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          message += "\n➤ Izin lokasi ditolak. Aktifkan izin lokasi di browser kamu.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          message += "\n➤ Lokasi tidak tersedia. Coba aktifkan GPS atau ganti jaringan.";
+          break;
+        case error.TIMEOUT:
+          message += "\n➤ Waktu habis. Coba klik ulang tombol lokasi.";
+          break;
+      }
+      alert(message);
+    }
+  );
 });
