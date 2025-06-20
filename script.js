@@ -1,5 +1,6 @@
 
 const map = L.map('map').setView([-7.3505, 108.2172], 12);
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
@@ -17,19 +18,34 @@ dataKebakaran.forEach(item => {
     opacity: 1,
     fillOpacity: 0.8
   }).addTo(map);
-  marker.bindPopup(`<b>Lokasi:</b> ${item.lokasi}<br><b>Waktu:</b> ${item.waktu}<br><b>Penyebab:</b> ${item.penyebab}<br><b>Tingkat:</b> ${item.tingkat}`);
+
+  marker.bindPopup(
+    `<b>Lokasi:</b> ${item.lokasi}<br>
+     <b>Waktu:</b> ${item.waktu}<br>
+     <b>Penyebab:</b> ${item.penyebab}<br>
+     <b>Tingkat:</b> ${item.tingkat}`
+  );
 });
 
 document.getElementById("locate-btn").addEventListener("click", () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
+
+      // 👉 GANTI ikon di sini aja
+      const customIcon = L.icon({
+        iconUrl: 'lokasi-icon.png',  // pastikan file ada di folder yg sama
+        iconSize: [50, 50],
+        iconAnchor: [25, 50],
+        popupAnchor: [0, -50]
+      });
+
       L.marker([latitude, longitude], {
-        icon: L.icon({
-          iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
-          iconSize: [25, 25]
-        })
-      }).addTo(map).bindPopup("Lokasi Anda").openPopup();
+        icon: customIcon
+      }).addTo(map)
+        .bindPopup("Lokasi Anda")
+        .openPopup();
+
       map.setView([latitude, longitude], 14);
     }, () => alert("Gagal mendapatkan lokasi."));
   } else {
