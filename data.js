@@ -1,35 +1,27 @@
-
 const dataKebakaran = [
-  {
-    lat: -7.3500,
-    lng: 108.2200,
-    lokasi: "Pasar Cikurubuk",
-    waktu: "2020-07-15",
-    penyebab: "Kompor meledak",
-    tingkat: "Tinggi"
-  },
-  {
-    lat: -7.3650,
-    lng: 108.2100,
-    lokasi: "Gunung Panglayungan",
-    waktu: "2022-09-12",
-    penyebab: "Cuaca panas ekstrem",
-    tingkat: "Tinggi"
-  },
-  {
-    lat: -7.3601,
-    lng: 108.2001,
-    lokasi: "Jl. BKR Indihiang",
-    waktu: "2023-04-28",
-    penyebab: "Korsleting listrik",
-    tingkat: "Tinggi"
-  },
-  {
-    lat: -7.3455,
-    lng: 108.2342,
-    lokasi: "Taman Kota, Cihideung",
-    waktu: "2025-06-18",
-    penyebab: "Korsleting AC",
-    tingkat: "Tinggi"
-  }
+  { lat: -7.3500, lng: 108.2200, lokasi: "Pasar Cikurubuk", waktu: "2020-07-15", penyebab: "Kompor meledak", tingkat: "Tinggi" },
+  { lat: -7.3650, lng: 108.2100, lokasi: "Gunung Panglayungan", waktu: "2022-09-12", penyebab: "Cuaca panas ekstrem", tingkat: "Tinggi" },
+  { lat: -7.3601, lng: 108.2001, lokasi: "Jl. BKR Indihiang", waktu: "2023-04-28", penyebab: "Korsleting listrik", tingkat: "Tinggi" },
+  { lat: -7.3455, lng: 108.2342, lokasi: "Taman Kota, Cihideung", waktu: "2025-06-18", penyebab: "Korsleting AC", tingkat: "Tinggi" },
+  { lat: -7.3845, lng: 108.2201, lokasi: "Cibeureum Hilir", waktu: "2021-05-12", penyebab: "Pembakaran lahan", tingkat: "Sedang" },
+  { lat: -7.3754, lng: 108.1981, lokasi: "Kawalu", waktu: "2019-09-20", penyebab: "Lahan kering terbakar", tingkat: "Tinggi" },
+  { lat: -7.3620, lng: 108.2250, lokasi: "Tamansari", waktu: "2020-08-10", penyebab: "Kebakaran rumah", tingkat: "Tinggi" },
+  { lat: -7.3466, lng: 108.2365, lokasi: "Argasari", waktu: "2022-11-05", penyebab: "Arus pendek", tingkat: "Tinggi" },
+  { lat: -7.3667, lng: 108.2107, lokasi: "Cipari, Mangkubumi", waktu: "2024-03-07", penyebab: "Percikan api dapur", tingkat: "Sedang" },
+  { lat: -7.3550, lng: 108.2050, lokasi: "Indihiang Asri", waktu: "2023-10-01", penyebab: "Gas bocor", tingkat: "Tinggi" },
+  { lat: -7.3523, lng: 108.2140, lokasi: "Pasar Wetan", waktu: "2021-07-15", penyebab: "Konsleting malam hari", tingkat: "Tinggi" },
+  { lat: -7.3720, lng: 108.2280, lokasi: "Cikalang", waktu: "2021-06-18", penyebab: "Lilin terjatuh", tingkat: "Sedang" },
+  { lat: -7.3700, lng: 108.2150, lokasi: "Jl. Cilembang", waktu: "2023-01-20", penyebab: "Korsleting listrik", tingkat: "Tinggi" },
+  { lat: -7.3655, lng: 108.2300, lokasi: "Gobras, Tamansari", waktu: "2022-04-22", penyebab: "Kompor terbakar", tingkat: "Sedang" },
+  { lat: -7.3565, lng: 108.2125, lokasi: "SL Tobing, Tawang", waktu: "2024-06-05", penyebab: "Percikan kabel listrik", tingkat: "Tinggi" },
+  { lat: -7.3495, lng: 108.2199, lokasi: "Haurgeulis, Cipedes", waktu: "2020-02-09", penyebab: "Rokok dibuang sembarangan", tingkat: "Sedang" },
+  { lat: -7.3612, lng: 108.2177, lokasi: "Jl. Nagarawangi", waktu: "2023-11-10", penyebab: "Pemasakan kayu terlalu lama", tingkat: "Sedang" },
+  { lat: -7.3502, lng: 108.2153, lokasi: "Pasar Cihideung", waktu: "2022-12-14", penyebab: "Lapak plastik terbakar", tingkat: "Tinggi" },
+  { lat: -7.3580, lng: 108.2265, lokasi: "Jl. Ir. H. Juanda", waktu: "2021-09-01", penyebab: "Kabel tertimpa pohon", tingkat: "Tinggi" },
+  { lat: -7.3489, lng: 108.2312, lokasi: "Bungursari", waktu: "2024-01-17", penyebab: "Percikan dari genset", tingkat: "Sedang" },
+  { lat: -7.3410, lng: 108.2389, lokasi: "Gunung Gede", waktu: "2020-03-28", penyebab: "Lahan semak belukar", tingkat: "Tinggi" },
+  { lat: -7.3605, lng: 108.2091, lokasi: "Cipedes RT 04", waktu: "2021-10-11", penyebab: "Kompor tidak dimatikan", tingkat: "Tinggi" },
+  { lat: -7.3663, lng: 108.2205, lokasi: "Sukamanah", waktu: "2022-07-25", penyebab: "Pembakaran sampah", tingkat: "Sedang" },
+  { lat: -7.3711, lng: 108.2133, lokasi: "Mangkubumi Tengah", waktu: "2024-02-14", penyebab: "Korsleting listrik", tingkat: "Tinggi" },
+  { lat: -7.3551, lng: 108.2188, lokasi: "Yudanagara", waktu: "2023-05-22", penyebab: "Percikan api saat masak", tingkat: "Sedang" }
 ];
