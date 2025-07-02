@@ -64,23 +64,6 @@ const fireIncidents = [
   }
 ];
 
-const lokasiDarurat = [
-  {
-    nama: "RSUD Dr. Soekardjo",
-    alamat: "Jl. Rumah Sakit No. 1, Tasikmalaya",
-    telepon: "(0265) 331001",
-    koordinat: [-7.333, 108.219],
-    tipe: "rs"
-  },
-  {
-    nama: "PMI Kota Tasikmalaya",
-    alamat: "Jl. Letjen Mashudi No. 1, Tasikmalaya",
-    telepon: "(0265) 331199",
-    koordinat: [-7.340, 108.215],
-    tipe: "pmi"
-  }
-];
-
 window.onload = function () {
   const map = L.map('map').setView([-7.35, 108.22], 12);
 
@@ -92,20 +75,9 @@ window.onload = function () {
     L.marker(fire.location)
       .addTo(map)
       .bindPopup(`
-        <strong>🔥 ${fire.zoneName}</strong><br>
+        <strong>${fire.zoneName}</strong><br>
         ${fire.date} ${fire.time}<br>
         ${fire.description}
-      `);
-  });
-
-  lokasiDarurat.forEach(loc => {
-    const emoji = loc.tipe === "pmi" ? "🩸" : "🏥";
-    L.marker(loc.koordinat)
-      .addTo(map)
-      .bindPopup(`
-        <strong>${emoji} ${loc.nama}</strong><br>
-        ${loc.alamat}<br>
-        Telp: ${loc.telepon}
       `);
   });
 };
