@@ -70,14 +70,14 @@ const lokasiDarurat = [
     alamat: "Jl. Rumah Sakit No. 1, Tasikmalaya",
     telepon: "(0265) 331001",
     koordinat: [-7.333, 108.219],
-    icon: "hospital.png"
+    tipe: "rs"
   },
   {
     nama: "PMI Kota Tasikmalaya",
     alamat: "Jl. Letjen Mashudi No. 1, Tasikmalaya",
     telepon: "(0265) 331199",
     koordinat: [-7.340, 108.215],
-    icon: "pmi.png"
+    tipe: "pmi"
   }
 ];
 
@@ -88,37 +88,22 @@ window.onload = function () {
     attribution: '© OpenStreetMap contributors'
   }).addTo(map);
 
-  const fireIcon = L.icon({
-    iconUrl: 'icon/fire.png',
-    iconSize: [32, 32]
-  });
-
-  const hospitalIcon = L.icon({
-    iconUrl: 'icon/hospital.png',
-    iconSize: [28, 28]
-  });
-
-  const pmiIcon = L.icon({
-    iconUrl: 'icon/pmi.png',
-    iconSize: [28, 28]
-  });
-
   fireIncidents.forEach(fire => {
-    L.marker(fire.location, { icon: fireIcon })
+    L.marker(fire.location)
       .addTo(map)
       .bindPopup(`
-        <strong>${fire.zoneName}</strong><br>
+        <strong>🔥 ${fire.zoneName}</strong><br>
         ${fire.date} ${fire.time}<br>
         ${fire.description}
       `);
   });
 
   lokasiDarurat.forEach(loc => {
-    const icon = loc.icon.includes("pmi") ? pmiIcon : hospitalIcon;
-    L.marker(loc.koordinat, { icon: icon })
+    const emoji = loc.tipe === "pmi" ? "🩸" : "🏥";
+    L.marker(loc.koordinat)
       .addTo(map)
       .bindPopup(`
-        <strong>${loc.nama}</strong><br>
+        <strong>${emoji} ${loc.nama}</strong><br>
         ${loc.alamat}<br>
         Telp: ${loc.telepon}
       `);
