@@ -63,3 +63,64 @@ const fireIncidents = [
     description: "Kebakaran lahan kosong."
   }
 ];
+
+const lokasiDarurat = [
+  {
+    nama: "RSUD Dr. Soekardjo",
+    alamat: "Jl. Rumah Sakit No. 1, Tasikmalaya",
+    telepon: "(0265) 331001",
+    koordinat: [-7.333, 108.219],
+    icon: "hospital.png"
+  },
+  {
+    nama: "PMI Kota Tasikmalaya",
+    alamat: "Jl. Letjen Mashudi No. 1, Tasikmalaya",
+    telepon: "(0265) 331199",
+    koordinat: [-7.340, 108.215],
+    icon: "pmi.png"
+  }
+];
+
+window.onload = function () {
+  const map = L.map('map').setView([-7.35, 108.22], 12);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  const fireIcon = L.icon({
+    iconUrl: 'icon/fire.png',
+    iconSize: [32, 32]
+  });
+
+  const hospitalIcon = L.icon({
+    iconUrl: 'icon/hospital.png',
+    iconSize: [28, 28]
+  });
+
+  const pmiIcon = L.icon({
+    iconUrl: 'icon/pmi.png',
+    iconSize: [28, 28]
+  });
+
+  fireIncidents.forEach(fire => {
+    L.marker(fire.location, { icon: fireIcon })
+      .addTo(map)
+      .bindPopup(`
+        <strong>${fire.zoneName}</strong><br>
+        ${fire.date} ${fire.time}<br>
+        ${fire.description}
+      `);
+  });
+
+  lokasiDarurat.forEach(loc => {
+    const icon = loc.icon.includes("pmi") ? pmiIcon : hospitalIcon;
+    L.marker(loc.koordinat, { icon: icon })
+      .addTo(map)
+      .bindPopup(`
+        <strong>${loc.nama}</strong><br>
+        ${loc.alamat}<br>
+        Telp: ${loc.telepon}
+      `);
+  });
+};
