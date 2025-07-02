@@ -3,33 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fire Risk Mapping - Tasikmalaya</title>
+  <title>Peta Kebakaran Tasikmalaya</title>
   <link rel="stylesheet" href="leaflet/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="sidebar">
-    <h1>Fire Risk Mapping<br>Kota Tasikmalaya</h1>
-
-    <input type="text" placeholder="🔍 Cari zona..." />
-
-    <div class="button-group">
-      <button onclick="showRisks()">Zona Risiko</button>
-      <button onclick="showStats()">Statistik</button>
-      <button onclick="showEmergencies()">Darurat</button>
-    </div>
-
-    <p>Data zona rawan kebakaran akan ditampilkan di peta.</p>
-    <p>Statistik kejadian akan muncul di sini.</p>
-
-    <h3>Tips Pencegahan Kebakaran</h3>
-    <ul>
-      <li>Periksa instalasi listrik secara berkala dan gunakan MCB yang sesuai</li>
-      <li>Siapkan APAR (Alat Pemadam Api Ringan) di tempat strategis</li>
-    </ul>
-  </div>
-
-  <div id="map"></div>
+  <div id="map" style="height: 100vh;"></div>
 
   <script src="leaflet/leaflet.js"></script>
   <script src="data.js"></script>
