@@ -1,57 +1,82 @@
-
-const map = L.map('map').setView([-7.3505, 108.2172], 12);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-
-function getColor(level) {
-  return level === 'Tinggi' ? 'red' : level === 'Sedang' ? 'orange' : 'green';
-}
-
-dataKebakaran.forEach(item => {
-  const marker = L.circleMarker([item.lat, item.lng], {
-    radius: 8,
-    fillColor: getColor(item.tingkat),
-    color: "#000",
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.8
-  }).addTo(map);
-  marker.bindPopup(`<b>Lokasi:</b> ${item.lokasi}<br><b>Waktu:</b> ${item.waktu}<br><b>Penyebab:</b> ${item.penyebab}<br><b>Tingkat:</b> ${item.tingkat}`);
-});
-
-document.getElementById("locate-btn").addEventListener("click", () => {
-  if (!navigator.geolocation) {
-    alert("Browser tidak mendukung fitur lokasi.");
-    return;
+const fireIncidents = [
+  {
+    zoneName: "Cipedes",
+    location: [-7.339, 108.216],
+    date: "2025-03-12",
+    time: "13:20",
+    description: "Kebakaran rumah tinggal akibat korsleting listrik."
+  },
+  {
+    zoneName: "Bungursari",
+    location: [-7.319, 108.221],
+    date: "2025-04-02",
+    time: "15:50",
+    description: "Gudang terbakar karena puntung rokok."
+  },
+  {
+    zoneName: "Indihiang",
+    location: [-7.325, 108.241],
+    date: "2025-05-22",
+    time: "09:10",
+    description: "Warung semi permanen terbakar."
+  },
+  {
+    zoneName: "Tawang",
+    location: [-7.324, 108.227],
+    date: "2025-02-18",
+    time: "11:30",
+    description: "Kebakaran dapur rumah kontrakan."
+  },
+  {
+    zoneName: "Kawalu",
+    location: [-7.378, 108.254],
+    date: "2025-01-09",
+    time: "20:15",
+    description: "Kebakaran rumah akibat lilin."
+  },
+  {
+    zoneName: "Cihideung",
+    location: [-7.329, 108.216],
+    date: "2025-06-03",
+    time: "07:40",
+    description: "Warung terbakar akibat kebocoran tabung gas."
+  },
+  {
+    zoneName: "Mangkubumi",
+    location: [-7.353, 108.227],
+    date: "2025-06-18",
+    time: "14:25",
+    description: "Kebakaran ruko bahan bangunan."
+  },
+  {
+    zoneName: "Tamansari",
+    location: [-7.379, 108.241],
+    date: "2025-06-24",
+    time: "10:00",
+    description: "Rumah semi permanen habis terbakar."
+  },
+  {
+    zoneName: "Cibeureum",
+    location: [-7.373, 108.213],
+    date: "2025-07-01",
+    time: "17:45",
+    description: "Kebakaran lahan kosong."
   }
+];
 
-  navigator.geolocation.getCurrentPosition(
-    position => {
-      const { latitude, longitude } = position.coords;
-      L.marker([latitude, longitude], {
-        icon: L.icon({
-          iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
-          iconSize: [25, 25]
-        })
-      }).addTo(map).bindPopup("Lokasi Anda").openPopup();
-      map.setView([latitude, longitude], 14);
-    },
-    error => {
-      let message = "Gagal mendapatkan lokasi.";
-      switch (error.code) {
-        case error.PERMISSION_DENIED:
-          message += "\n➤ Izin lokasi ditolak. Aktifkan izin lokasi di browser kamu.";
-          break;
-        case error.POSITION_UNAVAILABLE:
-          message += "\n➤ Lokasi tidak tersedia. Coba aktifkan GPS atau ganti jaringan.";
-          break;
-        case error.TIMEOUT:
-          message += "\n➤ Waktu habis. Coba klik ulang tombol lokasi.";
-          break;
-      }
-      alert(message);
-    }
-  );
-});
+const lokasiDarurat = [
+  {
+    nama: "RSUD Dr. Soekardjo",
+    alamat: "Jl. Rumah Sakit No. 1, Tasikmalaya",
+    telepon: "(0265) 331001",
+    koordinat: [-7.333, 108.219],
+    icon: "hospital.png"
+  },
+  {
+    nama: "PMI Kota Tasikmalaya",
+    alamat: "Jl. Letjen Mashudi No. 1, Tasikmalaya",
+    telepon: "(0265) 331199",
+    koordinat: [-7.340, 108.215],
+    icon: "pmi.png"
+  }
+];
