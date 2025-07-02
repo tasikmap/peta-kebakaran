@@ -3,14 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Peta Kebakaran Tasikmalaya</title>
-  <link rel="stylesheet" href="leaflet/leaflet.css" />
+  <title>Fire Risk Mapping Kota Tasikmalaya</title>
+
+  <!-- Leaflet CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Style CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="map" style="height: 100vh;"></div>
+  <h1>🔥 Fire Risk Mapping<br>Kota Tasikmalaya</h1>
 
-  <script src="leaflet/leaflet.js"></script>
+  <input type="text" id="searchInput" placeholder="🔍 Cari zona..." />
+  <button onclick="showRiskZones()">Zona Risiko</button>
+  <button onclick="showStatistics()">Statistik</button>
+  <button onclick="showEmergency()">Darurat</button>
+
+  <div id="map" style="height: 400px; margin-top: 15px;"></div>
+
+  <div id="info">
+    <p>Data zona rawan kebakaran akan ditampilkan di peta.</p>
+    <p>Statistik kejadian akan muncul di sini.</p>
+
+    <h3>Tips Pencegahan Kebakaran</h3>
+    <ul>
+      <li>Periksa instalasi listrik secara berkala dan gunakan MCB yang sesuai</li>
+      <li>Siapkan APAR (Alat Pemadam Api Ringan) di tempat strategis</li>
+    </ul>
+  </div>
+
+  <!-- Script JS -->
   <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
