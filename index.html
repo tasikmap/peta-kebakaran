@@ -1,19 +1,77 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Peta Rawan Kebakaran Tasikmalaya</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <title>Fire Risk Mapping - Kota Tasikmalaya</title>
+  <link rel="stylesheet" href="leaflet/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Pemetaan Wilayah Rawan Kebakaran - Tasikmalaya</h1>
+  <div class="sidebar">
+    <h2>Fire Risk Mapping<br><span>Kota Tasikmalaya</span></h2>
+    <input type="text" placeholder="🔍 Cari zona..." class="search-box">
+    <div class="tab">
+      <button class="tablink active" onclick="openTab(event, 'risiko')">Zona Risiko</button>
+      <button class="tablink" onclick="openTab(event, 'statistik')">Statistik</button>
+      <button class="tablink" onclick="openTab(event, 'darurat')">Darurat</button>
+    </div>
+    <div id="risiko" class="tabcontent" style="display:block">
+      <p>Data zona rawan kebakaran akan ditampilkan di peta.</p>
+    </div>
+    <div id="statistik" class="tabcontent">
+      <p>Statistik kejadian akan muncul di sini.</p>
+    </div>
+    <div id="darurat" class="tabcontent">
+      <div id="daruratList"></div>
+    </div>
+    <div class="tips">
+      <h4>Tips Pencegahan Kebakaran</h4>
+      <ul>
+        <li>Periksa instalasi listrik secara berkala dan gunakan MCB yang sesuai</li>
+        <li>Siapkan APAR (Alat Pemadam Api Ringan) di tempat strategis</li>
+      </ul>
+    </div>
+  </div>
+
   <div id="map"></div>
-  <button id="locate-btn">📍 Lokasi Saya</button>
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script src="leaflet/leaflet.js"></script>
   <script src="data.js"></script>
-  <script src="script.js"></script>
+  <script src="lokasi-darurat.js"></script>
+  <script>
+    const map = L.map('map').setView([-7.35, 108.22], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    fireIncidents.forEach(incident => {
+      const icon = L.icon({ iconUrl: 'icon/fire.png', iconSize: [32, 32] });
+      L.marker(incident.location, { icon })
+        .addTo(map)
+        .bindPopup(`<b>${incident.zoneName}</b><br>${incident.date} ${incident.time}<br>${incident.description}`);
+    });
+
+    lokasiDarurat.forEach(lokasi => {
+      const icon = L.icon({ iconUrl: `icon/${lokasi.icon}`, iconSize: [28, 28] });
+      L.marker(lokasi.koordinat, { icon })
+        .addTo(map)
+        .bindPopup(`<b>${lokasi.nama}</b><br>${lokasi.alamat}<br><a href="tel:${lokasi.telepon}">${lokasi.telepon}</a>`);
+
+      document.getElementById("daruratList").innerHTML += `
+        <div class="kontak">
+          <h4>${lokasi.nama}</h4>
+          <p><a href="tel:${lokasi.telepon}">${lokasi.telepon}</a></p>
+          <p>${lokasi.alamat}</p>
+        </div>`;
+    });
+
+    function openTab(evt, tabName) {
+      document.querySelectorAll(".tabcontent").forEach(el => el.style.display = "none");
+      document.querySelectorAll(".tablink").forEach(btn => btn.classList.remove("active"));
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
 </body>
 </html>
